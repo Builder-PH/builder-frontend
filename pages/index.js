@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from "react";
+
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
@@ -15,6 +17,10 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+//COMPONENTS
+import Navbar from "../components/Navbar";
+import Nav from "../components/Nav";
 
 function Copyright(props) {
   return (
@@ -36,6 +42,19 @@ function Copyright(props) {
 
 const theme = createTheme();
 
+// const useWindowSize = () => {
+//   const [size, setSize] = useState([window.innerHeight, window.innerWidth]);
+//   useEffect(() => {
+//     const handleResize = () => {
+//       setSize([window.innerHeight, window.innerWidth]);
+//     };
+
+//     window.addEventListener("resize", handleResize);
+//   }, []);
+
+//   return size;
+// };
+
 export default function SignIn() {
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -47,8 +66,12 @@ export default function SignIn() {
     });
   };
 
+  // const [height, width] = useWindowSize();
+
   return (
     <ThemeProvider theme={theme}>
+      <Navbar />
+      {/* <Nav /> */}
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -103,6 +126,7 @@ export default function SignIn() {
             >
               Sign In
             </Button>
+            {/* <h1>height: {height} width: {width}</h1> */}
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
