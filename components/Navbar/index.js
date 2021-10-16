@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 
-import { AppBar, Toolbar, Typography, Button, IconButton } from "@mui/material";
-import { cyan } from "@mui/material/colors";
-import { Box } from "@mui/system";
-import MenuIcon from "@mui/icons-material/Menu";
-import Dropdown from "../Dropdown";
+import Hamburger from "hamburger-react";
 
+import { AppBar, Toolbar, Typography, IconButton } from "@mui/material";
+
+import Button from "../Button";
 import styles from "./Navbar.module.css";
 
 const navbar_list = [
@@ -32,63 +31,52 @@ const navbar_list = [
   },
 ];
 
-const useWindowSize = () => {
-  const [size, setSize] = useState([window.innerHeight, window.innerWidth]);
-  useEffect(() => {
-    const handleResize = () => {
-      setSize([window.innerHeight, window.innerWidth]);
-    };
-
-    window.addEventListener("resize", handleResize);
-  }, []);
-
-  return size;
-};
-
 const Navbar = () => {
-  const [height, width] = useWindowSize();
+  const [click, setClick] = useState(false);
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Builder PH
-          </Typography>
-          {/* <Dropdown /> */}
-          {width <= 600 ? (
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: -2 }}
-            >
-              <MenuIcon />
-            </IconButton>
-          ) : (
-            <>
-              {navbar_list.map((item, key) => {
-                return (
-                  <Link key={key} href={item.link} passHref>
-                    <Typography mr={2} className={styles.links}>
-                      {item.title}
-                    </Typography>
-                  </Link>
-                );
-              })}
-              <Button
-                color="inherit"
-                variant="outlined"
-                className={styles.loginBtn}
-              >
-                Login
-              </Button>
-            </>
-          )}
-        </Toolbar>
-      </AppBar>
-    </Box>
+    <header>
+      <div className={styles.topBar}>
+        <div>
+          <h1>Builder</h1>
+        </div>
+        <nav
+          className={[
+            styles.overlay,
+            click ? styles.bounceIn : styles.bounceOut,
+          ]}
+        >
+          <div className={styles.expanded}>
+            {navbar_list.map((item, key) => {
+              return (
+                <Link href={item.link} passHref key={key}>
+                  <h3 className={styles.expandedNav}>{item.title}</h3>
+                </Link>
+              );
+            })}
+            <Link href="/login" passHref>
+              <h3 className={styles.loginBtn}>Login</h3>
+            </Link>
+          </div>
+          <div
+            className={[
+              click ? styles.overlayContent : styles.overlayContentHidden,
+            ]}
+          >
+            {navbar_list.map((item, key) => {
+              return (
+                <Link href={item.link} passHref key={key}>
+                  <h3 className={styles.links}>{item.title}</h3>
+                </Link>
+              );
+            })}
+          </div>
+        </nav>
+        <div className={styles.burger}>
+          <Hamburger toggled={click} toggle={setClick} />
+        </div>
+      </div>
+    </header>
   );
 };
 
