@@ -1,0 +1,17 @@
+.links {
+  display: block;
+}
+
+.links:hover {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .links {
+    display: none;
+  }
+
+  .loginBtn {
+    display: none;
+  }
+}

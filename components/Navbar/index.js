@@ -7,28 +7,7 @@ import { Box } from "@mui/system";
 import MenuIcon from "@mui/icons-material/Menu";
 import Dropdown from "../Dropdown";
 
-const services_list = [
-  {
-    id: 1,
-    link: "/pest-control",
-    title: "Pest Control",
-  },
-  {
-    id: 2,
-    link: "/refrigerator-and-aircon",
-    title: "Refrigerator and Aircon",
-  },
-  {
-    id: 3,
-    link: "/plumbing",
-    title: "Plumbing",
-  },
-  {
-    id: 4,
-    link: "/electrical-services",
-    title: "Electrical Services",
-  },
-];
+import styles from "./Navbar.module.css";
 
 const navbar_list = [
   {
@@ -53,9 +32,21 @@ const navbar_list = [
   },
 ];
 
+const useWindowSize = () => {
+  const [size, setSize] = useState([window.innerHeight, window.innerWidth]);
+  useEffect(() => {
+    const handleResize = () => {
+      setSize([window.innerHeight, window.innerWidth]);
+    };
+
+    window.addEventListener("resize", handleResize);
+  }, []);
+
+  return size;
+};
 
 const Navbar = () => {
-  
+  const [height, width] = useWindowSize();
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -65,29 +56,38 @@ const Navbar = () => {
             Builder PH
           </Typography>
           {/* <Dropdown /> */}
-          {navbar_list.map((item, key) => {
-            return (
-              <Link key={key} href={item.link} passHref>
-                <Typography mr={2}>{item.title}</Typography>
-              </Link>
-            );
-          })}
-          <Button color="inherit" variant="outlined">
-            Login
-          </Button>
-
-          {/* <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton> */}
+          {width <= 600 ? (
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: -2 }}
+            >
+              <MenuIcon />
+            </IconButton>
+          ) : (
+            <>
+              {navbar_list.map((item, key) => {
+                return (
+                  <Link key={key} href={item.link} passHref>
+                    <Typography mr={2} className={styles.links}>
+                      {item.title}
+                    </Typography>
+                  </Link>
+                );
+              })}
+              <Button
+                color="inherit"
+                variant="outlined"
+                className={styles.loginBtn}
+              >
+                Login
+              </Button>
+            </>
+          )}
         </Toolbar>
       </AppBar>
-      
     </Box>
   );
 };
