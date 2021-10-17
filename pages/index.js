@@ -21,6 +21,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 //COMPONENTS
 import Navbar from "../components/Navbar";
 import Nav from "../components/Nav";
+import Footer from "../components/Footer";
 
 function Copyright(props) {
   return (
@@ -88,6 +89,7 @@ export default function SignIn() {
         </Box>
         <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
+      <Footer />
     </ThemeProvider>
   );
 }

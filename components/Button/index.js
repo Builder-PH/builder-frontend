@@ -2,11 +2,12 @@ import styled, { css } from "styled-components";
 
 const Button = styled.button`
     flex-direction: row;
-    border-radius: 3px;
-    padding: 10px;
+    border-radius: 10px;
+    padding: 0.5rem 1.5rem;
     margin: 5px;
     justify-content: center;
     background: transparent;
+    color: white;
     ${(props) =>
       props.primary &&
       css`
