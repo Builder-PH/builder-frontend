@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-
-import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
+//MATERIAL UI IMPORTS
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -20,8 +18,11 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 //COMPONENTS
 import Navbar from "../components/Navbar";
-import Nav from "../components/Nav";
 import Footer from "../components/Footer";
+import CardComponent from "../components/Card";
+
+//DATA IMPORTS
+import services from "../assets/data/services.js";
 
 function Copyright(props) {
   return (
@@ -43,19 +44,6 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-// const useWindowSize = () => {
-//   const [size, setSize] = useState([window.innerHeight, window.innerWidth]);
-//   useEffect(() => {
-//     const handleResize = () => {
-//       setSize([window.innerHeight, window.innerWidth]);
-//     };
-
-//     window.addEventListener("resize", handleResize);
-//   }, []);
-
-//   return size;
-// };
-
 export default function SignIn() {
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -67,28 +55,26 @@ export default function SignIn() {
     });
   };
 
-  // const [height, width] = useWindowSize();
-
   return (
     <ThemeProvider theme={theme}>
       <Navbar />
-      {/* <Nav /> */}
-      <Container component="main" maxWidth="xs">
+      <div className={styles.mainContainer}>
         <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <Typography component="h1" variant="h5">
-            Home Page
-          </Typography>
-        </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
-      </Container>
+
+        <Typography component="h1" variant="h5">
+          Home Pageee
+        </Typography>
+        <div className={styles.centeringContainer}>
+          <div className={styles.cardContainer}>
+            {services.map((service, key) => {
+              return <CardComponent key={key} service={service} />;
+            })}
+          </div>
+        </div>
+      </div>
+
+      <Copyright sx={{ mt: 8, mb: 4 }} />
+
       <Footer />
     </ThemeProvider>
   );
