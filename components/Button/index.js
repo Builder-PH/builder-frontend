@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 const Button = styled.button`
     flex-direction: row;
     border-radius: 10px;
-    padding: 0.5rem 1.5rem;
+    padding: 0.2rem 1.5rem;
     margin: 5px;
     justify-content: center;
     background: transparent;
@@ -11,7 +11,7 @@ const Button = styled.button`
     ${(props) =>
       props.primary &&
       css`
-        background: blue;
+        background: black;
       `}
     }
     ${(props) =>

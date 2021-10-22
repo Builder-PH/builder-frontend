@@ -20,6 +20,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import CardComponent from "../components/Card";
+import SearchBanner from "../components/SearchBanner";
 
 //DATA IMPORTS
 import services from "../assets/data/services.js";
@@ -44,20 +45,11 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignIn() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
-  };
-
+export default function HomePage() {
   return (
     <ThemeProvider theme={theme}>
       <Navbar />
+      <SearchBanner />
       <div className={styles.mainContainer}>
         <CssBaseline />
 
