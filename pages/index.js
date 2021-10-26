@@ -23,7 +23,7 @@ import CardComponent from "../components/Card";
 import SearchBanner from "../components/SearchBanner";
 
 //DATA IMPORTS
-import services from "../assets/data/services.js";
+import data from "../assets/data/services.js";
 
 function Copyright(props) {
   return (
@@ -58,7 +58,7 @@ export default function HomePage() {
         </Typography>
         <div className={styles.centeringContainer}>
           <div className={styles.cardContainer}>
-            {services.map((service, key) => {
+            {data.services.map((service, key) => {
               return <CardComponent key={key} service={service} />;
             })}
           </div>
