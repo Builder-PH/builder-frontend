@@ -5,8 +5,8 @@ const services = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem laboriosam dicta animi dolores nihil saepe porro accusamus, ipsam tempora enim neque quas quisquam sequi.",
     category: "Home Repair",
-    rating: 0,
-    numReviews: 0,
+    rating: 3.5,
+    numReviews: 3,
   },
   {
     serviceType: "Refrigerator Repair",
@@ -14,8 +14,8 @@ const services = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem laboriosam dicta animi dolores nihil saepe porro accusamus, ipsam tempora enim neque quas quisquam sequi.",
     category: "Home Repair",
-    rating: 0,
-    numReviews: 0,
+    rating: 4,
+    numReviews: 10,
   },
   {
     serviceType: "Plumbing Services",
@@ -23,8 +23,8 @@ const services = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem laboriosam dicta animi dolores nihil saepe porro accusamus, ipsam tempora enim neque quas quisquam sequi.",
     category: "Home Repair",
-    rating: 0,
-    numReviews: 0,
+    rating: 5,
+    numReviews: 7,
   },
 ];
 export default services;
