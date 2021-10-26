@@ -18,7 +18,7 @@ import StarIcon from "@mui/icons-material/Star";
 
 const CardComponent = ({ service }) => {
   return (
-    <Link href={`/service/${service._id}`} passHref>
+    <Link href={`/services/${service.slug}`} passHref>
       <Card sx={{ maxWidth: 345 }} className={styles.card}>
         <CardMedia component="img" height="140" image="" alt="Listing" />
         <CardContent>
