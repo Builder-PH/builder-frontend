@@ -19,6 +19,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 //COMPONENTS
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import Layout from "../components/Layout";
 import CardComponent from "../components/Card";
 import SearchBanner from "../components/SearchBanner";
 
@@ -47,8 +48,7 @@ const theme = createTheme();
 
 export default function HomePage() {
   return (
-    <ThemeProvider theme={theme}>
-      <Navbar />
+    <Layout>
       <SearchBanner />
       <div className={styles.mainContainer}>
         <CssBaseline />
@@ -66,8 +66,6 @@ export default function HomePage() {
       </div>
 
       <Copyright sx={{ mt: 8, mb: 4 }} />
-
-      <Footer />
-    </ThemeProvider>
+    </Layout>
   );
 }
