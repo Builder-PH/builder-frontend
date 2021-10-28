@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.detailsContainer {
+  padding: 2rem;
+  min-height: calc(80vh + 20px);
+}
