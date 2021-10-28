@@ -22,8 +22,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import data from "../../assets/data/services";
 
 //COMPONENT IMPORTS
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
+import Layout from "../../components/Layout";
 import RatingCmp from "../../components/RatingCmp";
 
 const ServiceDetailsPage = () => {
@@ -36,102 +35,98 @@ const ServiceDetailsPage = () => {
   }
   return (
     <div className={styles.container}>
-      <Navbar />
-      <NextLink href="/services" passHref>
-        <Link>
-          <Typography>
-            <div>
-              <ArrowBackIcon /> Back to Services
-            </div>
-          </Typography>
-        </Link>
-      </NextLink>
-      <div className={styles.detailsContainer}>
-        <Grid container spacing={1}>
-          <Grid item md={6} xs={12}>
-            {/* <Image
+      <Layout>
+        <NextLink href="/services" passHref>
+          <Link>
+            <Typography>
+              <div>
+                <ArrowBackIcon /> Back to Services
+              </div>
+            </Typography>
+          </Link>
+        </NextLink>
+        <div className={styles.detailsContainer}>
+          <Grid container spacing={1}>
+            <Grid item md={6} xs={12}>
+              {/* <Image
             src={service.image}
             alt={service.serviceType}
             width={640}
             height={640}
             layout="responsive"
           /> */}
-          </Grid>
-          <Grid item md={3} xs={12}>
-            <List>
-              <ListItem>
-                <Typography component="h1">{service.serviceType}</Typography>
-              </ListItem>
-              <ListItem>
-                <Typography>Category: {service.category}</Typography>
-              </ListItem>
-              <ListItem>
-                <RatingCmp
-                  value={service.rating}
-                  text={`${service.numReviews}`}
-                />
-              </ListItem>
-              <ListItem>
-                <Typography>
-                  Service Description: {service.description}
-                </Typography>
-              </ListItem>
-            </List>
-          </Grid>
-
-          <Grid item md={3} xs={12}>
-            <Card>
+            </Grid>
+            <Grid item md={3} xs={12}>
               <List>
                 <ListItem>
-                  <Grid container>
-                    <Grid item xs={6}>
-                      <Typography>Average Price:</Typography>
-                    </Grid>
-                    <Grid>
-                      <Typography>Php 1000–2000</Typography>
-                    </Grid>
-                  </Grid>
+                  <Typography component="h1">{service.serviceType}</Typography>
                 </ListItem>
                 <ListItem>
-                  <Grid container>
-                    <Grid item xs={6}>
-                      <Typography>Company:</Typography>
-                    </Grid>
-                    <Grid>
-                      <Typography>Repairs Shop</Typography>
-                    </Grid>
-                  </Grid>
+                  <Typography>Category: {service.category}</Typography>
                 </ListItem>
                 <ListItem>
-                  <Grid container>
-                    <Grid item xs={6}>
-                      <Typography>Related Services:</Typography>
-                    </Grid>
-                    <Grid>
-                      <Typography>Airconditioer, Plumbing</Typography>
-                    </Grid>
-                  </Grid>
+                  <RatingCmp
+                    value={service.rating}
+                    text={`${service.numReviews}`}
+                  />
                 </ListItem>
                 <ListItem>
-                  <Button fullWidth variant="contained">
-                    Request Quote
-                  </Button>
-                </ListItem>
-                <ListItem>
-                  <Button fullWidth variant="contained">
-                    <FavoriteBorderIcon />
-                  </Button>
+                  <Typography>
+                    Service Description: {service.description}
+                  </Typography>
                 </ListItem>
               </List>
-            </Card>
-          </Grid>
-        </Grid>
-      </div>
+            </Grid>
 
-      {/* <h1>{service.serviceType}</h1>
-      <p>{service.category}</p>
-      <p>{service.description}</p> */}
-      <Footer />
+            <Grid item md={3} xs={12}>
+              <Card>
+                <List>
+                  <ListItem>
+                    <Grid container>
+                      <Grid item xs={6}>
+                        <Typography>Average Price:</Typography>
+                      </Grid>
+                      <Grid>
+                        <Typography>Php 1000–2000</Typography>
+                      </Grid>
+                    </Grid>
+                  </ListItem>
+                  <ListItem>
+                    <Grid container>
+                      <Grid item xs={6}>
+                        <Typography>Company:</Typography>
+                      </Grid>
+                      <Grid>
+                        <Typography>Repairs Shop</Typography>
+                      </Grid>
+                    </Grid>
+                  </ListItem>
+                  <ListItem>
+                    <Grid container>
+                      <Grid item xs={6}>
+                        <Typography>Related Services:</Typography>
+                      </Grid>
+                      <Grid>
+                        <Typography>Airconditioer, Plumbing</Typography>
+                      </Grid>
+                    </Grid>
+                  </ListItem>
+                  <ListItem>
+                    <Button fullWidth variant="contained">
+                      Request Quote
+                    </Button>
+                  </ListItem>
+                  <ListItem>
+                    <Button fullWidth variant="contained">
+                      <FavoriteBorderIcon />
+                    </Button>
+                  </ListItem>
+                </List>
+              </Card>
+            </Grid>
+          </Grid>
+        </div>
+      </Layout>
     </div>
   );
 };

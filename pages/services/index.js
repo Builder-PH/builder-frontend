@@ -2,8 +2,7 @@ import React from "react";
 
 //COMPONENT IMPORTS
 import CardComponent from "../../components/Card";
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
+import Layout from "../../components/Layout";
 
 //DATA IMPORTS
 // import services from "../../assets/data/services";
@@ -15,8 +14,7 @@ import { ThemeProvider } from "styled-components";
 
 const ServicesPage = () => {
   return (
-    <div>
-      <Navbar />
+    <Layout>
       <div className={styles.mainContainer}>
         <div className={styles.centeringContainer}>
           <div className={styles.cardContainer}>
@@ -26,8 +24,7 @@ const ServicesPage = () => {
           </div>
         </div>
       </div>
-      <Footer />
-    </div>
+    </Layout>
   );
 };
 
