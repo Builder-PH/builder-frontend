@@ -25,6 +25,7 @@ import SearchBanner from "../components/SearchBanner";
 
 //DATA IMPORTS
 import data from "../assets/data/services.js";
+import axios from "axios";
 
 function Copyright(props) {
   return (
@@ -47,6 +48,20 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function HomePage() {
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      const { data } = await axios.get(
+        "https://builderv2-api.herokuapp.com/api/services/"
+      );
+
+      setServices(data);
+    };
+
+    fetchServices();
+  });
+
   return (
     <Layout>
       <SearchBanner />
@@ -58,9 +73,12 @@ export default function HomePage() {
         </Typography>
         <div className={styles.centeringContainer}>
           <div className={styles.cardContainer}>
-            {data.services.map((service, key) => {
+            {services.map((service, key) => {
               return <CardComponent key={key} service={service} />;
             })}
+            {/* {data.services.map((service, key) => {
+              return <CardComponent key={key} service={service} />;
+            })} */}
           </div>
         </div>
       </div>
